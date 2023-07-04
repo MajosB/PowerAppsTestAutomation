@@ -62,13 +62,15 @@ namespace Microsoft.PowerApps.TestAutomation.Tests
 
             using (var appBrowser = new PowerAppBrowser(options))
             {
+                 Console.WriteLine(_testAutomationURLFilePath);
                 // Track current test iteration
                 int testRunCounter = 0;
                 // Track list of  Test Automation URLs
                 var testUrlList = appBrowser.TestAutomation.GetTestURLs(_testAutomationURLFilePath);
-                Console.WriteLine("Total number of TestURLs: " + testUrlCount);
+                Console.WriteLine("Total nurls " + testUrlList);
                 // Track total number of TestURLs
                 int testUrlCount = testUrlList.Value.Count();
+                 Console.WriteLine("Total number of TestURLs: " + testUrlCount);
 
                 foreach (Uri testUrl in testUrlList?.Value)
                 {
