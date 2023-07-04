@@ -77,6 +77,7 @@ namespace Microsoft.PowerApps.TestAutomation.Tests
                     // Test URL
                     _testAutomationUri = testUrl;
                     testRunCounter += 1;
+                     Console.WriteLine($"Executing test URL:"+testUrl);
 
                     try
                     {
