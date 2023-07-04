@@ -66,6 +66,7 @@ namespace Microsoft.PowerApps.TestAutomation.Tests
                 int testRunCounter = 0;
                 // Track list of  Test Automation URLs
                 var testUrlList = appBrowser.TestAutomation.GetTestURLs(_testAutomationURLFilePath);
+                Console.WriteLine("Total number of TestURLs: " + testUrlCount);
                 // Track total number of TestURLs
                 int testUrlCount = testUrlList.Value.Count();
 
