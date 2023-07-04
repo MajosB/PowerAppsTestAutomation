@@ -1,0 +1,6 @@
+{
+  "TestUrl":
+  [
+    "https://apps.powerapps.com/play/{appid}?tenantId={tenantID}&__PATestCaseId={testCaseId}"
+  ]
+}
