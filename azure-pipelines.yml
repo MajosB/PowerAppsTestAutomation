@@ -65,6 +65,16 @@ jobs:
   steps:
   - checkout: self
   - checkout: PowerAppsTestAutomation
+  - script: |
+      echo OnlineUsername: $(OnlineUsername)
+      echo OnlinePassword: $(OnlinePassword)
+      echo BrowserType: ${{ parameters.BrowserType }}
+      echo OnlineUrl: $(PortalUrl)
+      echo TestAutomationURLFilePath: $(Build.SourcesDirectory)\$(LocalProjectName)\$(TestUrlFileName)
+      echo UsePrivateMode: $(PrivateMode)
+      echo LoginMethod: ${{ parameters.LoginMethod }}
+      echo RepositoryName: 'PowerAppsTestAutomation'
+    displayName: 'Print pipeline variables'
   #- template: localsteps.yml # Provide optional local YAML template here
   - template: frameworksteps.yml@PowerAppsTestAutomation
     parameters:
