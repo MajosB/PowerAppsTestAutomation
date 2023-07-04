@@ -137,6 +137,11 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     {
                         driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]));
                     }
+                      if (driver.IsVisible(By.XPath(Elements.Xpath[Reference.Login.AuthenticationCode])))
+                    {
+                        var authenticationCode = driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.AuthenticationCode])).Text;
+                        Console.WriteLine("Código de autenticación: " + authenticationCode);
+                    }
 
                     driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.MainPage])
                         , new TimeSpan(0, 2, 0),
