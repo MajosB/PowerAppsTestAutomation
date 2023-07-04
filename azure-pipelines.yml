@@ -11,7 +11,7 @@ resources:
       name: MajosB/PowerAppsTestAutomation
       ref: master
       # Name of the GitHub OAuth ADO Service Connection
-      endpoint: gtihub.com_MajosB
+      endpoint: github.com_MajosB
 
 parameters:
  - name: image
@@ -73,6 +73,6 @@ jobs:
       OnlineUrl: $(PortalUrl)
       BrowserType: ${{ parameters.BrowserType }}
       # File location format is /s/TeamProjectName/FilePathToTestAutomationURLs.json
-      TestAutomationURLFilePath: "https://github.com/MajosB/PowerAppsTestAutomation/blob/master/TestURLs.json"
+      TestAutomationURLFilePath: $(Build.SourcesDirectory)\$(LocalProjectName)\$(TestUr1Fi1eName)
       UsePrivateMode: $(PrivateMode)
       LoginMethod: ${{ parameters.LoginMethod }}
