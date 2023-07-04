@@ -53,23 +53,34 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         {
             return this.Execute(GetOptions("Get List of Test URLs"), driver =>
             {
-                //Replace encoded characters (%20) if present
+                // Replace encoded characters (%20) if present
                 if (filePath.Contains("%20"))
                 {
                     filePath = filePath.Replace("%20", " ");
                 }
+
                 // Initialize list of URLs
                 List<Uri> testUrlList = new List<Uri>();
 
-                // Read contents of json file
-                JObject jObject = Newtonsoft.Json.JsonConvert.DeserializeObject<JObject>(File.ReadAllText(filePath));
+                // Read contents of JSON file
+                string json = File.ReadAllText(filePath);
+                JObject jsonObject = JObject.Parse(json);
+                JArray urlArray = (JArray)jsonObject["TestUrl"];
 
-                // Retrieve list of Test URLs
-                testUrlList = jObject["TestURLs"]?.ToObject<List<Uri>>();
+                // Convert URLs to Uri objects
+                foreach (string url in urlArray)
+                {
+                    if (Uri.TryCreate(url, UriKind.Absolute, out Uri uri))
+                    {
+                        testUrlList.Add(uri);
+                    }
+                }
 
                 return testUrlList;
             });
         }
+
+
 
         public class TestSuiteResult
         {
