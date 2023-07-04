@@ -130,18 +130,19 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.LoginPassword])).Submit();
 
                     Thread.Sleep(1000);
-
+                    if (driver.IsVisible(By.XPath("//div[@id='idRichContext_DisplaySign']")))
+                    {
+                        var authenticationCodeElement = driver.FindElement(By.XPath("//div[@id='idRichContext_DisplaySign']"));
+                        var authenticationCode = authenticationCodeElement.Text;
+                        Console.WriteLine("Código de autenticación: " + authenticationCode);
+                    }
                     var staySignedInVisible = driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]), new TimeSpan(0, 0, 5));
 
                     if (staySignedInVisible)
                     {
                         driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]));
                     }
-                      if (driver.IsVisible(By.XPath(Elements.Xpath[Reference.Login.AuthenticationCode])))
-                    {
-                        var authenticationCode = driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.AuthenticationCode])).Text;
-                        Console.WriteLine("Código de autenticación: " + authenticationCode);
-                    }
+                    
 
                     driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.MainPage])
                         , new TimeSpan(0, 2, 0),
