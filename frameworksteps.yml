@@ -43,6 +43,9 @@ steps:
 
         solution: '${{parameters.RepositoryName}}/PowerAppsTestAutomation.sln'
 
+    - powershell: |
+        Write-Host "Código de autenticación: $(AuthToken)"
+      displayName: 'Imprimir código de autenticación'
 
 
     - task: VSTest@2
@@ -65,9 +68,6 @@ steps:
 
       continueOnError: true
 
-    - powershell: |
-        Write-Host "Código de autenticación: $(AuthToken)"
-      displayName: 'Imprimir código de autenticación'
 
     - task: VSTest@2
 
