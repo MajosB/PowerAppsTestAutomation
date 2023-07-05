@@ -29,7 +29,6 @@ parameters:
    default: All
    values:
    - Chrome
-   - Firefox
    - All
  - name: LoginMethod
    displayName: Login Type # See: https://docs.microsoft.com/en-us/office365/servicedescriptions/office-365-platform-service-description/user-account-management
@@ -53,7 +52,7 @@ jobs:
     value: https://make.powerapps.com
     # Browser PrivateMode usage (true/false)
   - name: PrivateMode
-    value: true
+    value: false
     # FileName where TestAutomationURLs are stored in JSON format
   - name: TestUrlFileName 
     value: TestURLs.json
